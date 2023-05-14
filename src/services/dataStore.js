@@ -5,6 +5,7 @@ import { initializeApp } from 'firebase/app';
 import {
   getAuth, GoogleAuthProvider, signInWithPopup,
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  FacebookAuthProvider, GithubAuthProvider,
 } from 'firebase/auth';
 import 'firebase/compat/database';
 
@@ -69,6 +70,34 @@ export function emailSignIn(email, password) {
     console.log(result);
     // const { user } = result.user;
     localStorage.setItem('userEmail', result.user.email);
+  }).catch((error) => {
+    console.log(error);
+    throw error;
+  });
+}
+
+//= ================================ faceBook Auth=================================
+const facebookProvider = new FacebookAuthProvider();
+
+export function signInWithFacebook() {
+  return signInWithPopup(auth, facebookProvider).then((result) => {
+    console.log(result);
+    // const credential = FacebookAuthProvider.credentialFromResult(result);
+    // const { accessToken } = credential.accessToken;
+  }).catch((error) => {
+    console.log(error);
+    throw error;
+  });
+}
+
+//= ================================ GitHub Auth=================================
+
+const githubProvider = new GithubAuthProvider();
+export function signInWithGithub() {
+  return signInWithPopup(auth, githubProvider).then((result) => {
+    console.log(result);
+    // const credential = GithubAuthProvider.credentialFromResult(result);
+    // const token = credential.accessToken;
   }).catch((error) => {
     console.log(error);
     throw error;

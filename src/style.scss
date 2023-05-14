@@ -17,6 +17,50 @@ body, html {
     align-items: center;
     background: yellow;
 }
+
+.EmailAndPasswordContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.signInSignUpContainer{
+    margin-bottom: 20px;
+    background: green;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.signInButton{
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.signUpButton{
+    margin-left: 10px;
+}
+
+
+
+
+
+.EmailInput, .PasswordInput{
+
+    border-radius: 15px;
+    margin-bottom: 10px;
+    width: 275px;
+    height: 40px;
+    background-color: transparent;
+    border: 3px solid rgb(138,140,150);
+    padding-left: 10px;
+}
+
+
+
+
+
+
 .LogoContainer{
     display: flex;
     justify-content: center;
@@ -32,7 +76,7 @@ body, html {
 
   }
   .AppleIcon{
-    width: 10.5%;
+    width: 10%;
 
   }
 
