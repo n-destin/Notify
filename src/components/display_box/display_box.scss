@@ -1,0 +1,42 @@
+.displaybox {
+    padding: 30px;
+    background: #271F44;
+
+    .notcontentcards {
+        display: flex;
+        justify-content: space-between;
+    
+    //same as background color
+    
+    
+    
+    span {
+        text-align: left;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        
+
+
+
+    }
+
+    button {
+        text-align: right;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        background-color: #7b4aac;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+
+
+    }
+
+}
+
+
+}
