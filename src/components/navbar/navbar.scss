@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    width: 100%;
+    height: 50px;
+  width: 100%;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+ 
+  
+  
+    .leftside {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        color: gainsboro;
+        
+
+    }
+    .rightside {
+        text-align: right;
+
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        
+        button {
+
+        }
+        .profile {
+            img {
+                width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          object-fit: cover;
+            }
+        }
+    }
+}
