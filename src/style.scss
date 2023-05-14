@@ -1,15 +1,39 @@
 body, html {
     font-family: "Roboto", sans-serif;
-    background: linear-gradient(to bottom, #dafd87 0%,#2904b0 40%,#05abe0 100%);
+    background: blue;
     height: 100%;
   }
 
-  .logo {
-    background-image: url('./human.jpg');
-    width: 100px;
-    height: 100px;
-    background-repeat: no-repeat;
-    background-size: contain;
+//= ================================ LogIn Page =================================
+.LoginContainer{
+    background: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.LoginInputContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: yellow;
+}
+.LogoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  .GoogleIcon{
+    width: 10%;
+    margin-right: 2%;
+  }
+  .FaceBookIcon{
+    width: 10%;
+    margin-right: 2%;
+
+  }
+  .AppleIcon{
+    width: 10.5%;
+
   }
 
   :root {

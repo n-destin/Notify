@@ -1,0 +1,40 @@
+import React from 'react';
+
+import {
+  BrowserRouter, Routes, Route, NavLink,
+} from 'react-router-dom';
+
+import Login from './Login';
+import Test from './Test';
+
+function Nav(props) {
+  return (
+    <nav>
+      <ul className="NavBar">
+        <li className="binarylogo"><NavLink to="/">LogIn</NavLink></li>
+      </ul>
+    </nav>
+  );
+}
+
+function FallBack(props) {
+  return <div>URL Not Found</div>;
+}
+
+function App(props) {
+  return (
+    <BrowserRouter>
+      <div>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="*" element={<FallBack />} />
+        </Routes>
+      </div>
+
+    </BrowserRouter>
+  );
+}
+
+export default App;
