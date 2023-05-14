@@ -7,7 +7,6 @@ function Navbar() {
     return (
         <div className="navbar">
             <div className="leftside">
-                <i className="fa-sharp fa-solid fa-bars" />
                 Notify
             </div>
             <div className="rightside">
