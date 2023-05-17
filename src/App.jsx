@@ -8,7 +8,7 @@ function App() {
     return (
         // eslint-disable-next-line react/jsx-filename-extension
         <div>
-            <Landing />
+            <Chatpage />
         </div>
     );
 }
