@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
+// Help from chat gpt
 import './display_box.scss';
 import React, { useRef } from 'react';
 import Contentcard from '../content_card/content_card';
+import { newChat } from '../../services/firebase';
 
 function Displaybox() {
   const fileInputRef = useRef(null);
@@ -15,6 +18,7 @@ function Displaybox() {
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
+    // newChat(userId, sessionId)
   };
 
   return (
@@ -26,6 +30,7 @@ function Displaybox() {
         <label htmlFor="lecture-upload" className="button-group">
           <button type="button" onClick={handleButtonClick}>
             Upload lecture
+            
           </button>
           <input type="file" id="lecture-upload" style={{ display: 'none' }} onChange={handleFileInputChange} ref={fileInputRef} />
         </label>
