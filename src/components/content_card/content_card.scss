@@ -1,0 +1,34 @@
+//help from gpt
+
+
+.contentcard {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    margin: 10px;
+  }
+  
+  .image-container {
+    display: flex;
+    // align-items: center;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  .caption {
+    margin-top: 10px;
+    margin-left: 26px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+  
+  .caption span {
+    text-align: left;
+    width: 100%;
+  }
+  

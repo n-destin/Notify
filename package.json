@@ -4,6 +4,7 @@
   "description": "*description*",
   "main": "src/index.js",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -18,10 +19,15 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "sass": "^1.62.0",
+    "sass": "^1.62.1",
     "vite": "^4.2.1"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.0",
     "@reduxjs/toolkit": "^1.9.5",
     "babel": "^6.23.0",
     "firebase": "^9.22.0",
@@ -31,6 +37,8 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
+    "redux": "^4.2.1",
     "vite-plugin-eslint": "^1.8.1"
+    
   }
 }
