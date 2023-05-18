@@ -50,7 +50,7 @@ export function signInWithGoogle() {
 
 //= ================================ Email/Password Auth=================================
 
-// sign up with email and password
+// SIGN UP with email and password
 export function emailSignUp(email, password) {
   return createUserWithEmailAndPassword(auth, email, password).then((result) => {
     // Signed In
@@ -63,7 +63,7 @@ export function emailSignUp(email, password) {
   });
 }
 
-// sign in with email and password
+// SING IN with email and password
 export function emailSignIn(email, password) {
   return signInWithEmailAndPassword(auth, email, password).then((result) => {
     // Signed In
