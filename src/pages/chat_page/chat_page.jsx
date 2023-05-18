@@ -1,9 +1,12 @@
+/* eslint-disable react/jsx-closing-bracket-location */
+/* eslint-disable react/jsx-indent-props */
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
 import './chat_page.scss';
 import React from 'react';
-import Navbar from '../../components/navbar/navbar';
+// import { Input, MailIcon, Button } from '@mui/material';
 
 function Chatpage() {
   return (
@@ -16,9 +19,15 @@ function Chatpage() {
           <div className="name">AI</div>
         </div>
         <div className="buttons">
-          <div className="homeb">Home</div>
-          <div className="lightdark">light</div>
-          <div className="report">report</div>
+          <div className="homeb">
+              <i className="fa-solid fa-house" />
+          </div>
+          <div className="lightdark">
+          <i className="fa-solid fa-sun" />
+          </div>
+          <div className="report">
+          <i className="fa-solid fa-flag" />
+          </div>
         </div>
         <div className="user">
           <div className="avatar">
@@ -27,7 +36,9 @@ function Chatpage() {
         </div>
       </div>
       <div className="chatwindow">
-        <div className="date">Today, June 22</div>
+          <div className="datecont">
+             <div className="date">Today, June 22</div>
+          </div>
         <div className="chat">
           <div className="ai">
             <div className="container">
@@ -72,7 +83,19 @@ function Chatpage() {
         </div>
       </div>
       <div className="messagebar">
-        messagebar
+        <div className="container">
+            <div className="circlecont">
+                <div className="microphone">
+                    microphone
+
+                </div>
+                <div className="input">
+                Input
+
+                </div>
+
+            </div>
+        </div>
       </div>
     </div>
   );
