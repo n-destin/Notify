@@ -5,7 +5,9 @@ import {
 } from 'react-router-dom';
 
 import Login from './Login';
-import Test from './Test';
+// import Test from './Test';
+// eslint-disable-next-line import/extensions, import/no-unresolved
+import Home from '../pages/home/home';
 
 function Nav(props) {
     return (
@@ -28,7 +30,7 @@ function App(props) {
                 <Nav />
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="/test" element={<Test />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="*" element={<FallBack />} />
                 </Routes>
             </div>
