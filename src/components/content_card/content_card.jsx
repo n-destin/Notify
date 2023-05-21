@@ -3,7 +3,11 @@
 import './content_card.scss';
 import React from 'react';
 
-function Contentcard() {
+function Contentcard(props) {
+  
+  function getNotes(){
+    
+  }
   return (
     <div className="contentcard">
       <div className="image-container">
@@ -11,7 +15,7 @@ function Contentcard() {
       </div>
       <div className="caption">
         <span>
-          Lecture #0
+          Lecture {props.count};
         </span>
       </div>
     </div>
