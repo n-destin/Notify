@@ -19,7 +19,7 @@ export default function Login() {
     // Google Sign in
     const handleGoogleSignIn = () => {
         signInWithGoogle().then(() => {
-            navigate('/test');
+            navigate('/home');
         }).catch((error) => {
             console.log(error);
         });
@@ -28,7 +28,7 @@ export default function Login() {
     // Facebook Sign in
     const handleFacebookSignIn = () => {
         signInWithFacebook().then(() => {
-            navigate('/test');
+            navigate('/home');
         }).catch((error) => {
             console.log(error);
         });
@@ -37,7 +37,7 @@ export default function Login() {
     // Github Sign in
     const handleGithubSignIn = () => {
         signInWithGithub().then(() => {
-            navigate('/test');
+            navigate('/home');
         }).catch((error) => {
             console.log(error);
         });
@@ -46,7 +46,7 @@ export default function Login() {
     // Email/Password Sign up
     const handleEmailSignUp = () => {
         emailSignUp(email, password).then(() => {
-            navigate('/test');
+            navigate('/home');
         }).catch((error) => {
             const errorCode = error.code;
             // eslint-disable-next-line no-alert
@@ -57,7 +57,7 @@ export default function Login() {
     // Email/Password Sign in
     const handleEmailSignIn = () => {
         emailSignIn(email, password).then(() => {
-            navigate('/test');
+            navigate('/home');
         }).catch((error) => {
             const errorCode = error.code;
             // eslint-disable-next-line no-alert

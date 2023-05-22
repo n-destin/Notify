@@ -7,7 +7,7 @@ import React, { useRef } from 'react';
 import Contentcard from '../content_card/content_card';
 import { newChat, onSessionChange } from '../../services/firebase';
 
-function Displaybox() {
+function Displaybox(props) {
   const fileInputRef = useRef(null);
 
   const handleFileInputChange = (event) => {
@@ -24,6 +24,12 @@ function Displaybox() {
     // newChat(userId, sessionId)
   };
 
+
+  const lectures = Object.keys(props.lectures).map((lecture)=>{
+    console.log(lecture);
+    return <Contentcard count = {lecture.id}/>
+  })
+
   return (
     <div className="displaybox">
       <div className="notcontentcards">
@@ -38,7 +44,7 @@ function Displaybox() {
         </label>
       </div>
       <div className="lectures">
-        <Contentcard />
+        {lectures}
       </div>
     </div>
   );
