@@ -52,3 +52,13 @@ export function onSessionChange(callback) {
 export function newTransctip(userId, Notes) {
   Transcipts.child(userId).push(Notes);
 }
+
+export function newUser(id) {
+  try {
+    Transcipts.child(id).push('');
+    console.log('creating a new user');
+  } catch (error) {
+    console.log(error.message);
+    console.log('Loggin in');
+  }
+}

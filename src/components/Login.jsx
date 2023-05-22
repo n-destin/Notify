@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     signInWithGoogle, emailSignUp, emailSignIn, signInWithFacebook, signInWithGithub,
+    auth,
 } from '../services/dataStore';
 
 // images
 import GoogleIcon from '../images/googleIcon.png';
 import FBIcon from '../images/fbIcon.png';
 import GitHub from '../images/GitHub.png';
+import { newUser } from '../services/firebase';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -18,8 +20,13 @@ export default function Login() {
 
     // Google Sign in
     const handleGoogleSignIn = () => {
-        signInWithGoogle().then(() => {
-            navigate('/test');
+        signInWithGoogle().then((result) => {
+            const isNewUser = result.user.metadata.creationTime === result.user.metadata.lastSignInTime;
+            console.log(isNewUser);
+            if (isNewUser) {
+                newUser(result.user.uid);
+            }
+            navigate('/home');
         }).catch((error) => {
             console.log(error);
         });
@@ -27,8 +34,13 @@ export default function Login() {
 
     // Facebook Sign in
     const handleFacebookSignIn = () => {
-        signInWithFacebook().then(() => {
-            navigate('/test');
+        signInWithFacebook().then((result) => {
+            const isNewUser = result.user.metadata.creationTime === result.user.metadata.lastSignInTime;
+            console.log(isNewUser);
+            if (isNewUser) {
+                newUser(result.user.uid);
+            }
+            navigate('/home');
         }).catch((error) => {
             console.log(error);
         });
@@ -36,8 +48,13 @@ export default function Login() {
 
     // Github Sign in
     const handleGithubSignIn = () => {
-        signInWithGithub().then(() => {
-            navigate('/test');
+        signInWithGithub().then((result) => {
+            const isNewUser = result.user.metadata.creationTime === result.user.metadata.lastSignInTime;
+            console.log(isNewUser);
+            if (isNewUser) {
+                newUser(result.user.uid);
+            }
+            navigate('/home');
         }).catch((error) => {
             console.log(error);
         });
@@ -46,7 +63,9 @@ export default function Login() {
     // Email/Password Sign up
     const handleEmailSignUp = () => {
         emailSignUp(email, password).then(() => {
-            navigate('/test');
+            const user = auth.currentUser;
+            newUser(user.uid);
+            navigate('/home');
         }).catch((error) => {
             const errorCode = error.code;
             // eslint-disable-next-line no-alert
@@ -57,7 +76,7 @@ export default function Login() {
     // Email/Password Sign in
     const handleEmailSignIn = () => {
         emailSignIn(email, password).then(() => {
-            navigate('/test');
+            navigate('/home');
         }).catch((error) => {
             const errorCode = error.code;
             // eslint-disable-next-line no-alert

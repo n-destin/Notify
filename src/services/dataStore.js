@@ -31,16 +31,6 @@ const googleProvider = new GoogleAuthProvider();
 export function signInWithGoogle() {
     return signInWithPopup(auth, googleProvider).then((result) => {
         console.log(result);
-        const name = result.user.displayName;
-        const { email } = result.user;
-        const profilePic = result.user.photoURL;
-        const { uid } = result.user;
-
-        localStorage.setItem('name', name);
-        localStorage.setItem('email', email);
-        localStorage.setItem('profilePic', profilePic);
-        localStorage.setItem('uid', uid);
-
         return result;
     }).catch((error) => {
         console.log(error);
@@ -54,9 +44,7 @@ export function signInWithGoogle() {
 export function emailSignUp(email, password) {
     return createUserWithEmailAndPassword(auth, email, password).then((result) => {
     // Signed In
-        console.log(result);
-        // const { user } = result.user;
-        localStorage.setItem('userEmail', result.user.email);
+        return result;
     }).catch((error) => {
         console.log(error);
         throw error;
@@ -82,8 +70,7 @@ const facebookProvider = new FacebookAuthProvider();
 export function signInWithFacebook() {
     return signInWithPopup(auth, facebookProvider).then((result) => {
         console.log(result);
-    // const credential = FacebookAuthProvider.credentialFromResult(result);
-    // const { accessToken } = credential.accessToken;
+        return result;
     }).catch((error) => {
         console.log(error);
         throw error;
@@ -96,8 +83,7 @@ const githubProvider = new GithubAuthProvider();
 export function signInWithGithub() {
     return signInWithPopup(auth, githubProvider).then((result) => {
         console.log(result);
-    // const credential = GithubAuthProvider.credentialFromResult(result);
-    // const token = credential.accessToken;
+        return result;
     }).catch((error) => {
         console.log(error);
         throw error;
