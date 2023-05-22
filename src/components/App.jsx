@@ -8,6 +8,7 @@ import Login from './Login';
 // import Test from './Test';
 // eslint-disable-next-line import/extensions, import/no-unresolved
 import Home from '../pages/home/home';
+import ChatPage from '../pages/chat_page/ChatPage';
 
 function Nav(props) {
     return (
@@ -31,6 +32,7 @@ function App(props) {
                 <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/home" element={<Home />} />
+                    <Route path="/chat" element={<ChatPage />}/>
                     <Route path="*" element={<FallBack />} />
                 </Routes>
             </div>
