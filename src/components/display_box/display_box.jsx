@@ -5,6 +5,7 @@
 import './display_box.scss';
 import React, { useRef } from 'react';
 import Contentcard from '../content_card/content_card';
+import { newChat, onSessionChange } from '../../services/firebase';
 
 function Displaybox() {
   const fileInputRef = useRef(null);
@@ -17,6 +18,9 @@ function Displaybox() {
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
+    onSessionChange((sessionId) => {
+      console.log('Session ID:', sessionId);
+    });
     // newChat(userId, sessionId)
   };
 

@@ -5,7 +5,9 @@ import {
 import { Home } from '../pages/home/home';
 
 import Login from './Login';
-import Test from './Test';
+// import Test from './Test';
+// eslint-disable-next-line import/extensions, import/no-unresolved
+import Home from '../pages/home/home';
 
 function Nav(props) {
     return (
