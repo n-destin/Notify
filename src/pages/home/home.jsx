@@ -15,9 +15,9 @@ function Home() {
 
     console.log(user.uid);
     // const userID = user.uid;
-    useEffect(()=>{
-        newUser(user.uid)
-    },[])
+    // useEffect(()=>{
+    //     newUser(user.uid)
+    // },[])
     useEffect(onSessionChange(user.uid, (data)=>{
             setLectures(data);
         }), [])

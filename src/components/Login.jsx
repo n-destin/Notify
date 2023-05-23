@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     signInWithGoogle, emailSignUp, emailSignIn, signInWithFacebook, signInWithGithub,
+    auth,
 } from '../services/dataStore';
 
 // images
 import GoogleIcon from '../images/googleIcon.png';
 import FBIcon from '../images/fbIcon.png';
 import GitHub from '../images/GitHub.png';
+import { newUser } from '../services/firebase';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -18,7 +20,12 @@ export default function Login() {
 
     // Google Sign in
     const handleGoogleSignIn = () => {
-        signInWithGoogle().then(() => {
+        signInWithGoogle().then((result) => {
+            const isNewUser = result.user.metadata.creationTime === result.user.metadata.lastSignInTime;
+            console.log(isNewUser);
+            if (isNewUser) {
+                newUser(result.user.uid);
+            }
             navigate('/home');
         }).catch((error) => {
             console.log(error);
@@ -27,7 +34,12 @@ export default function Login() {
 
     // Facebook Sign in
     const handleFacebookSignIn = () => {
-        signInWithFacebook().then(() => {
+        signInWithFacebook().then((result) => {
+            const isNewUser = result.user.metadata.creationTime === result.user.metadata.lastSignInTime;
+            console.log(isNewUser);
+            if (isNewUser) {
+                newUser(result.user.uid);
+            }
             navigate('/home');
         }).catch((error) => {
             console.log(error);
@@ -36,7 +48,12 @@ export default function Login() {
 
     // Github Sign in
     const handleGithubSignIn = () => {
-        signInWithGithub().then(() => {
+        signInWithGithub().then((result) => {
+            const isNewUser = result.user.metadata.creationTime === result.user.metadata.lastSignInTime;
+            console.log(isNewUser);
+            if (isNewUser) {
+                newUser(result.user.uid);
+            }
             navigate('/home');
         }).catch((error) => {
             console.log(error);
@@ -46,6 +63,8 @@ export default function Login() {
     // Email/Password Sign up
     const handleEmailSignUp = () => {
         emailSignUp(email, password).then(() => {
+            const user = auth.currentUser;
+            newUser(user.uid);
             navigate('/home');
         }).catch((error) => {
             const errorCode = error.code;
