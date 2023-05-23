@@ -10,7 +10,6 @@ function Home() {
     const [lectures, setLectures] = useState({});
     const user = auth.currentUser;
     console.log(user.uid);
-    // const userID = user.uid;
 
     useEffect(() => {
         onSessionChange(user.uid, (data) => {
