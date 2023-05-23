@@ -2,6 +2,9 @@ import './ChatPage.css';
 import React, { useState, useEffect, useRef } from 'react';
 // This enables streaming from OpenAI API (https://www.npmjs.com/package/sse)
 import { SSE } from "sse.js";
+import { useParams } from 'react-router-dom';
+import * as Firebase from '../../services/firebase'
+import { auth } from '../../services/dataStore'
 
 function ChatPage(){
   // Store message history (to render from firebase)
@@ -9,28 +12,48 @@ function ChatPage(){
   const [inputValue, setInputValue] = useState('');
   const [inputDisabled, setInputDisabled] = useState(false);
   
+
+  var currentURL = window.location.href;
+  var lastSlashIndex = currentURL.lastIndexOf('/');
+  var lectureId = currentURL.substring(lastSlashIndex + 1);
+
+  
   // Transcript information we will retrieve from Firebase
-  const [transcriptName, setTranscriptName] = "Intro to Macroeconomics (ECON11)";
-  const [transcriptContent, setTranscriptContent] = `Ladies and gentlemen, esteemed students, welcome to this introductory lecture on the fascinating world of macroeconomics. Today, we will embark on a journey to unravel the mysteries of the economy and explore the intricate interplay of various economic factors. Now, let us dive right into the depths of macroeconomics!\r\nFirst and foremost, what is macroeconomics, you may ask? Well, macroeconomics is the study of the overall performance and behavior of an economy as a whole. It focuses on factors such as gross domestic product (GDP), inflation, unemployment, and government policies. Think of it as zooming out and examining the bigger picture of the economy.
-
-One of the key concepts in macroeconomics is GDP, which stands for Gross Domestic Product. GDP is the total value of all goods and services produced within a country over a specific period of time. It is a measure of the economic activity and growth of a nation. To calculate GDP, we use the expenditure approach, which includes consumption, investment, government spending, and net exports.
-
-Now, let's talk about inflation, the sneaky little monster that affects our purchasing power. Inflation is the general increase in the prices of goods and services over time. It erodes the value of money and can have a significant impact on both individuals and the economy as a whole. Central banks often strive to maintain a low and stable inflation rate to foster economic stability.
-
-Next up, we have unemployment, a measure of the number of people who are actively seeking employment but are unable to find work. Unemployment can have severe consequences for individuals and society. Economists distinguish between different types of unemployment, such as frictional, structural, and cyclical unemployment. Policies such as job training programs and government interventions can help combat unemployment.Moving on, let's delve into fiscal and monetary policies. Fiscal policy refers to the government's use of taxation and spending to influence the economy. Governments can adjust tax rates and government spending to stimulate or slow down economic growth. On the other hand, monetary policy is controlled by central banks and involves managing interest rates and the money supply to influence borrowing, spending, and inflation.
-
-Last but not least, international trade plays a crucial role in macroeconomics. Countries engage in trade to take advantage of their comparative advantages and benefit from specialization. Concepts such as tariffs, quotas, and exchange rates affect the flow of goods and services between nations, and they have a significant impact on economic growth and global relations. Concepts such as tariffs, quotas, and exchange rates affect the flow of goods and services between nations, and they have a significant impact on economic growth and global relations.Concepts such as tariffs, quotas, and exchange rates affect the flow of goods and services between nations, and they have a significant impact on economic growth and global relations.Concepts such as tariffs, quotas, and exchange rates affect the flow of goods and services between nations, and they have a significant impact on economic growth and global relations.`
+  const [transcriptName, setTranscriptName] = useState('');
+  const [transcriptContent, setTranscriptContent] = useState('');
 
   function handleInputChange(event){
     setInputValue(event.target.value);
   };
 
+  const user = auth.currentUser;
+  //ge the lecture 
+  useEffect(()=>{
+    Firebase.getLecture(user.uid, lectureId, (data)=>{
+      Object.keys(data).map((key)=>{
+        if(key === lectureId){
+          console.log('here');
+          console.log(data[key]);
+          setTranscriptName(data[key].Title);
+          setTranscriptContent(data[key].Text);
+        }
+      })
+    });
+  }, [])
+  
+
+  // function setContent (){ 
+  //   (Transcript.Title? setTranscriptName(Transcript.Title) : '');
+    
+  // };
   // Annoying ass shit
   function updateHasBeenCalled(index){
     const newMessages = [...messages];
     messages[index].hasBeenCalled = true;
     setMessages(newMessages);
   }
+
+
 
   async function handleSubmit(event) {
 
@@ -47,10 +70,11 @@ Last but not least, international trade plays a crucial role in macroeconomics. 
 
     // Adds user message to list of messages
     setMessages((prevMessages) => [...prevMessages, newMessage]);
-
+    Firebase.newChat(user.uid, lectureId, newMessage);
     // Add server message
     const serverResponseMessage = { type: 'server', content: inputValue };
     setMessages((prevMessages) => [...prevMessages, serverResponseMessage]);
+  
 
     // Enables/disables input when the message is being generated by OpenAI
     setInputValue('');
@@ -115,24 +139,41 @@ const UserChatMessage = ({ content }) => {
 };
 
 // Server chat message component
-const ServerChatMessage = ({ initialContent, hasBeenCalled, updateHasBeenCalled }) => {
+const ServerChatMessage = ({ initialContent, hasBeenCalled, updateHasBeenCalled, serverMessage =  {
+  type: 'server',
+  content: '',
+  hasBeenCalled: false
+} }
+) => {
+
+  var currentURL = window.location.href;
+  var lastSlashIndex = currentURL.lastIndexOf('/');
+  var lectureId = currentURL.substring(lastSlashIndex + 1);
+
+  const [responseId, setResponseId]  = useState('');
+
   const [serverSideMessage, setServerSideMessage] = useState("");
   const serverSideMessageRef = useRef();
-
+  const user = auth.currentUser;
+  
 
   // Updates state whenever new tokens are streamed. Need to update Firebase here
   useEffect(() => {
     serverSideMessageRef.current = serverSideMessage;
+    // Firebase.changeContent(user.uid, lectureId, responseId, serverSideMessage)
   }, [serverSideMessage])
 
 
   // Only calls API once - does not call on re-renders (CRITICAL)
   if (!hasBeenCalled){
-    streamContent();
-    updateHasBeenCalled();
+    const responseId =  Firebase.newChat(user.uid, lectureId, serverMessage)
+    console.log(responseId);
+    setResponseId(responseId);
+    streamContent(responseId); 
+    updateHasBeenCalled(); 
   }
 
-  async function streamContent() {
+  async function streamContent(serverChatId) {
     const API_KEY = "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"; // need to make ENV var
     let url = "https://api.openai.com/v1/chat/completions";
 
@@ -187,6 +228,7 @@ const ServerChatMessage = ({ initialContent, hasBeenCalled, updateHasBeenCalled 
             const char = text.charAt(i);
             if (char !== "\n") {
               // We are updating state char by char, so we could update Firebase similarly
+
               serverSideMessageRef.current =
                 serverSideMessageRef.current + char;
               setServerSideMessage(serverSideMessageRef.current);
@@ -197,6 +239,7 @@ const ServerChatMessage = ({ initialContent, hasBeenCalled, updateHasBeenCalled 
             processingMessage = false;
             processNextMessage();
           }
+
         }, 15);
       }
     }

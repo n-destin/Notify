@@ -29,12 +29,10 @@ export function newMessage(userId, sessionId, sender, content) {
   database.ref('chats').child(userId).child(sessionId).push(new Message(sender, content));
 }
 
-export function newChat(userId, sessionId) {
-  if ((Chats.child(userId).child(sessionId))) {
-    Chats.child(userId).child(sessionId).update('');
-  } else {
-    Chats.push(userId).push(sessionId).push(new Message());
-  }
+export function newChat(userId, sessionId, message) {
+  console.log('positng to firebase');
+  const created = database.ref('chats').child(userId).child(sessionId).push(message);
+  return created.key;
 }
 
 export function onChangeMessageChange(userId, callback) {
@@ -48,6 +46,18 @@ export function onSessionChange(userId, callback) {
     console.log(snapshort.val());
     callback(snapshort.val());
   });
+}
+
+export function changeContent(userId, sessionId, messageId, content){
+  console.log('called');
+  console.log(content);
+  database.ref('chats').child(userId).child(sessionId).child(messageId).content.push(content);
+}
+
+export function getLecture (userId, lectureId, callback) {
+  database.ref('transcripts').child(userId).on('value', (snapshort)=>{
+    callback(snapshort.val());
+  })
 }
 
 export function newTransctip(userId, Notes) {

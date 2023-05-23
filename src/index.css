@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body, html {
+/* body, html {
     font-family: "Roboto", sans-serif;
     background: blue;
     height: 100%;
@@ -100,4 +100,4 @@ body, html {
   .active {
     color: pink;
   }
-  
+   */

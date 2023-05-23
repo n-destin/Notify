@@ -6,6 +6,7 @@ import { newUser, onSessionChange } from '../../services/firebase';
 import { auth } from '../../services/datastore';
 import axios from 'axios';
 import AWS from 'aws-sdk';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
     const[lectures, setLectures] = useState({});
@@ -13,14 +14,26 @@ function Home() {
     const [transcriptionError, setTranscriptionError] = useState(false);
     const user = auth.currentUser;
 
-    console.log(user.uid);
+    // console.log(user.uid);
     // const userID = user.uid;
     // useEffect(()=>{
     //     newUser(user.uid)
     // },[])
-    useEffect(onSessionChange(user.uid, (data)=>{
+    // if(user.uid == null){
+    //     useNavigate('/');
+    // }
+    
+    // useEffect(onSessionChange(user.uid, (data)=>{
+    //         setLectures(data);
+    //     }), [])
+
+    useEffect(() => {
+        onSessionChange(user.uid, (data) => {
             setLectures(data);
-        }), [])
+        });
+    }, []);
+
+    
 
     console.log(lectures);
 

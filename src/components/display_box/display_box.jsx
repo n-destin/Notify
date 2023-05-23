@@ -26,8 +26,9 @@ function Displaybox(props) {
 
 
   const lectures = Object.keys(props.lectures).map((lecture)=>{
+    console.log('getting the lectures');
     console.log(lecture);
-    return <Contentcard count = {lecture.id}/>
+    return <Contentcard lecture = {lecture}/>
   })
 
   return (

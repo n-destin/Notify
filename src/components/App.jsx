@@ -29,8 +29,7 @@ function App(props) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true)
 
-    const Navigate = useNavigate();
-
+    // const Navigate = useNavigate();
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             setIsAuthenticated(!!user);
@@ -40,21 +39,21 @@ function App(props) {
         return () => unsubscribe();
     }, []);
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <BrowserRouter>
-            <div>
-                <Nav />
                 <Routes>
                     <Route path="/" element={<Login />} />
                     <Route
                         path="/home"
-                        element={isAuthenticated ? <Home /> : <Navigate to="/" replace />}
+                        element={ < Home />}
                     />
                     <Route path="*" element={<FallBack />} />
-                    <Route path = "/chat" element = {<ChatPage />}/>
+                    <Route path = '/chat/:id' element = {<ChatPage />}/>
                 </Routes>
-            </div>
-
         </BrowserRouter>
     );
 }
