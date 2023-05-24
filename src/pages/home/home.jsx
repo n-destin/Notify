@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable indent */
+/* eslint-disable react/jsx-props-no-multi-spaces */
 import './home.scss';
 import React, { useEffect, useParams, useState } from 'react';
 import Navbar from '../../components/navbar/navbar';
@@ -6,17 +9,17 @@ import { newUser, onSessionChange } from '../../services/firebase';
 import { auth } from '../../services/datastore';
 
 function Home() {
-    const[lectures, setLectures] = useState({});
+    const [lectures, setLectures] = useState({});
     const user = auth.currentUser;
 
     console.log(user.uid);
     // const userID = user.uid;
-    useEffect(()=>{
-        newUser(user.uid)
-    },[])
-    useEffect(onSessionChange(user.uid, (data)=>{
+    useEffect(() => {
+        newUser(user.uid);
+    }, []);
+    useEffect(onSessionChange(user.uid, (data) => {
             setLectures(data);
-        }), [])
+        }), []);
 
     console.log(lectures);
 
@@ -26,7 +29,7 @@ function Home() {
                 <Navbar />
             </div>
             <div className="contentdisp">
-                <Displaybox  lectures  = {lectures}/>
+                <Displaybox lectures={lectures} />
             </div>
         </div>
     );

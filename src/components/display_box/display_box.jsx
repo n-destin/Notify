@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
@@ -24,11 +25,11 @@ function Displaybox(props) {
     // newChat(userId, sessionId)
   };
 
-
-  const lectures = Object.keys(props.lectures).map((lecture)=>{
+  // eslint-disable-next-line react/destructuring-assignment
+  const lectures = Object.keys(props.lectures).map((lecture) => {
     console.log(lecture);
-    return <Contentcard count = {lecture.id}/>
-  })
+    return <Contentcard count={lecture.id} />;
+  });
 
   return (
     <div className="displaybox">
