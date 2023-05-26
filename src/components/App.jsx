@@ -10,6 +10,7 @@ import Login from '../pages/login/Login';
 // eslint-disable-next-line import/extensions, import/no-unresolved
 import ChatPage from '../pages/chat_page/ChatPage';
 import { auth } from '../services/dataStore'
+import Landing from '../pages/landing/landing';
 
 function Nav(props) {
     return (

@@ -5,6 +5,7 @@ import App from './components/app';
 import './index.css';
 import { rootReducer } from './reducers/rootreducer';
 import { Provider } from 'react-redux';
+import Landing from './pages/landing/landing';
 
 
 const store = configureStore({
@@ -14,6 +15,6 @@ const root = createRoot(document.getElementById('main'));
 
 root.render(
     <Provider store={store}>
-        <App/>
+        <App />
     </Provider>
 );
