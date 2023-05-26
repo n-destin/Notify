@@ -3,7 +3,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
-// Help from chat gpt
 import './display_box.scss';
 import React, { useRef } from 'react';
 import Contentcard from '../content_card/content_card';
@@ -34,18 +33,31 @@ function Displaybox(props) {
 
   return (
     <div className="displaybox">
-        <div className="lecturescont">
+      <div className="lecturescont">
+        <div className="minicont">
           <span>Recent Lectures</span>
-          <div className="lectures">{lectures}</div>
+          <p>See all</p>
         </div>
-        <div className="lectureupload">
-          <label htmlFor="lecture-upload" className="button-group">
-              <button type="button" onClick={handleButtonClick}>
-                Upload lecture
-              </button>
-              <input type="file" id="lecture-upload" style={{ display: 'none' }} onChange={handleFileInputChange} ref={fileInputRef} />
-          </label>
+        <div className="lectures">{lectures}</div>
+      </div>
+      <div className="contentbox">
+        <h1>Want to upload a new lecture?</h1>
+        <div className="uploadco">
+          <button type="button" onClick={handleButtonClick} className="content-button">
+            Upload Lecture
+          </button>
+          <h1>Or use our chrome extension</h1>
+          <img src="src/assets/GitHub.png" alt="" />
         </div>
+      </div>
+      {/* <div className="lectureupload">
+        <label htmlFor="lecture-upload" className="button-group">
+          <button type="button" onClick={handleButtonClick} className="butt">
+            Upload Lecture
+          </button>
+          <input type="file" id="lecture-upload" style={{ display: 'none' }} onChange={handleFileInputChange} ref={fileInputRef} />
+        </label>
+      </div> */}
     </div>
   );
 }
