@@ -31,7 +31,6 @@ const googleProvider = new GoogleAuthProvider();
 export function signInWithGoogle() {
     return signInWithPopup(auth, googleProvider).then((result) => {
         console.log(result);
-    
 
         return result;
     }).catch((error) => {
@@ -75,8 +74,8 @@ const facebookProvider = new FacebookAuthProvider();
 export function signInWithFacebook() {
     return signInWithPopup(auth, facebookProvider).then((result) => {
         console.log(result);
-    // const credential = FacebookAuthProvider.credentialFromResult(result);
-    // const { accessToken } = credential.accessToken;
+        // const credential = FacebookAuthProvider.credentialFromResult(result);
+        // const { accessToken } = credential.accessToken;
         return result;
     }).catch((error) => {
         console.log(error);
@@ -90,8 +89,8 @@ const githubProvider = new GithubAuthProvider();
 export function signInWithGithub() {
     return signInWithPopup(auth, githubProvider).then((result) => {
         console.log(result);
-    // const credential = GithubAuthProvider.credentialFromResult(result);
-    // const token = credential.accessToken;
+        // const credential = GithubAuthProvider.credentialFromResult(result);
+        // const token = credential.accessToken;
         return result;
     }).catch((error) => {
         console.log(error);

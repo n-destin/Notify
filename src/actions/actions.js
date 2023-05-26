@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import { useEffect } from 'react';
 import * as Firebase from '../services/firebase';
