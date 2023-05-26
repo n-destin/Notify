@@ -5,8 +5,6 @@
     flex-direction: column;
     justify-content: space-between;
   
-    
-  
     .lecturescont {
       display: flex;
       flex-direction: column;
@@ -14,45 +12,70 @@
       border-radius: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       width: 100%;
-      span {
-        text-align: left;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-      }
-      .lectures {
-
-      }
-    
-      
-
-      
-      
-      flex-wrap: wrap; /* Add flex-wrap property to wrap the content cards */
-      justify-content: space-between; /* Add justify-content property to create space between the cards */
-      .lectureupload {
-        label {
-            button {
-                text-align: right;
-                border-radius: 20px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-                background-color: #7b4aac;
-                color: white;
-                padding: 10px 20px;
-                font-size: 16px;
-                border: none;
-            }
-            input {
-                
-            }
+  
+      .minicont {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* Adjust the spacing between elements */
+  
+        span {
+          text-align: left;
+          padding: 20px;
+          text-align: center;
+          font-size: 24px;
+          font-weight: bold;
+          align-self: start;
+        }
+  
+        p {
+          align-self: flex-end; /* Move the <p> element to the far right */
         }
       }
-      
-      }
   
-      
+      .lectures {
+        /* Add your specific styles for the lectures container if needed */
+      }
     }
   
+    .contentbox {
+      
+      background-color: #f3f3f3;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+  
+      .content-button {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+  
+      .uploadco {
+        display: flex;
+        flex-direction: row;
+  
+        h1 {
+          padding-left: 20px;
+        }
+  
+        img {
+          padding-right: 10px;
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  
+    .lectureupload {
+      label {
+        button {
+          background-color: red;
+        }
+      }
+    }
+  }
   
