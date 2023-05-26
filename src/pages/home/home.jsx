@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable indent */
+/* eslint-disable react/jsx-props-no-multi-spaces */
 import './home.scss';
 import React, { useEffect, useParams, useState } from 'react';
 import Navbar from '../../components/navbar/navbar';
@@ -16,24 +19,12 @@ function Home() {
 
     // console.log(user.uid);
     // const userID = user.uid;
-    // useEffect(()=>{
-    //     newUser(user.uid)
-    // },[])
-    // if(user.uid == null){
-    //     useNavigate('/');
-    // }
-    
-    // useEffect(onSessionChange(user.uid, (data)=>{
-    //         setLectures(data);
-    //     }), [])
-
     useEffect(() => {
-        onSessionChange(user.uid, (data) => {
-            setLectures(data);
-        });
+        newUser(user.uid);
     }, []);
-
-    
+    useEffect(onSessionChange(user.uid, (data) => {
+            setLectures(data);
+        }), []);
 
     console.log(lectures);
 
