@@ -1,42 +1,58 @@
 .displaybox {
     padding: 30px;
-    background: #271F44;
-
-    .notcontentcards {
-        display: flex;
-        justify-content: space-between;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
     
-    //same as background color
-    
-    
-    
-    span {
+  
+    .lecturescont {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      span {
         text-align: left;
         color: white;
         padding: 20px;
         text-align: center;
         font-size: 24px;
         font-weight: bold;
-        
+      }
+      .lectures {
 
+      }
+    
+      
 
-
+      
+      
+      flex-wrap: wrap; /* Add flex-wrap property to wrap the content cards */
+      justify-content: space-between; /* Add justify-content property to create space between the cards */
+      .lectureupload {
+        label {
+            button {
+                text-align: right;
+                border-radius: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                background-color: #7b4aac;
+                color: white;
+                padding: 10px 20px;
+                font-size: 16px;
+                border: none;
+            }
+            input {
+                
+            }
+        }
+      }
+      
+      }
+  
+      
     }
-
-    button {
-        text-align: right;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        background-color: #7b4aac;
-        color: white;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-
-
-    }
-
-}
-
-
-}
+  
+  
