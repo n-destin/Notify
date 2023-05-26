@@ -1,19 +1,25 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent-props */
 import React, { useState, useEffect } from 'react';
 
 import {
-    BrowserRouter, Routes, Route, NavLink, Navigate,
+    BrowserRouter, Routes, Route, NavLink, useNavigate,
 } from 'react-router-dom';
-import { auth } from '../services/dataStore';
-
-import Login from './Login';
 import Home from '../pages/home/home';
+
+import Login from '../pages/login/Login';
+// import Test from './Test';
+// eslint-disable-next-line import/extensions, import/no-unresolved
+import ChatPage from '../pages/chat_page/ChatPage';
+import { auth } from '../services/dataStore';
 
 function Nav(props) {
     return (
         <nav>
             <ul className="NavBar">
-                <li className="binarylogo"><NavLink to="/">LogIn</NavLink></li>
+                <NavLink to="/" />
             </ul>
         </nav>
     );
@@ -27,6 +33,7 @@ function App(props) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
 
+    // const Navigate = useNavigate();
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             setIsAuthenticated(!!user);
@@ -41,18 +48,15 @@ function App(props) {
     }
     return (
         <BrowserRouter>
-            <div>
-                <Nav />
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route
-                        path="/home"
-                        element={isAuthenticated ? <Home /> : <Navigate to="/" replace />}
-                    />
-                    <Route path="*" element={<FallBack />} />
-                </Routes>
-            </div>
-
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route
+                    path="/home"
+                    element={<Home />}
+                />
+                <Route path="*" element={<FallBack />} />
+                <Route path="/chat/:id" element={<ChatPage />} />
+            </Routes>
         </BrowserRouter>
     );
 }

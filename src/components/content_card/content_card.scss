@@ -2,19 +2,23 @@
 
 
 .contentcard {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    // align-items: center;
-    margin: 10px;
+    // margin: 10px;
+    // width: 15%;
+    background-color: yellow;
   }
   
   .image-container {
+    align-items: center;
+    width: fit-content;
     display: flex;
     // align-items: center;
   }
   
   img {
     max-width: 100%;
+    width: auto;
   }
   
   .caption {

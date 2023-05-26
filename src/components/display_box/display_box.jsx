@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
@@ -5,9 +7,9 @@
 import './display_box.scss';
 import React, { useRef } from 'react';
 import Contentcard from '../content_card/content_card';
-import { newChat } from '../../services/firebase';
+import { newChat, onSessionChange } from '../../services/firebase';
 
-function Displaybox() {
+function Displaybox(props) {
   const fileInputRef = useRef(null);
 
   const handleFileInputChange = (event) => {
@@ -18,8 +20,17 @@ function Displaybox() {
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
+    onSessionChange((sessionId) => {
+      console.log('Session ID:', sessionId);
+    });
     // newChat(userId, sessionId)
   };
+
+  const lectures = Object.keys(props.lectures).map((lecture) => {
+    console.log('getting the lectures');
+    console.log(lecture);
+    return <Contentcard lecture={lecture} />;
+  });
 
   return (
     <div className="displaybox">
@@ -30,13 +41,12 @@ function Displaybox() {
         <label htmlFor="lecture-upload" className="button-group">
           <button type="button" onClick={handleButtonClick}>
             Upload lecture
-
           </button>
           <input type="file" id="lecture-upload" style={{ display: 'none' }} onChange={handleFileInputChange} ref={fileInputRef} />
         </label>
       </div>
       <div className="lectures">
-        <Contentcard />
+        {lectures}
       </div>
     </div>
   );

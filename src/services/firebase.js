@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable indent */
 import firebase from 'firebase/compat/app';
@@ -29,12 +30,10 @@ export function newMessage(userId, sessionId, sender, content) {
   database.ref('chats').child(userId).child(sessionId).push(new Message(sender, content));
 }
 
-export function newChat(userId, sessionId) {
-  if ((Chats.child(userId).child(sessionId))) {
-    Chats.child(userId).child(sessionId).update('');
-  } else {
-    Chats.push(userId).push(sessionId).push(new Message());
-  }
+export function newChat(userId, sessionId, message) {
+  console.log('positng to firebase');
+  const created = database.ref('chats').child(userId).child(sessionId).push(message);
+  return created.key;
 }
 
 export function onChangeMessageChange(userId, callback) {
@@ -43,14 +42,31 @@ export function onChangeMessageChange(userId, callback) {
   });
 }
 
-export function onSessionChange(callback) {
-  Transcipts.on('value', (snapshort) => {
-    callback(snapshort);
+export function onSessionChange(userId, callback) {
+  database.ref('transcripts').child(userId).on('value', (snapshort) => {
+    console.log(snapshort.val());
+    callback(snapshort.val());
+  });
+}
+
+export function changeContent(userId, sessionId, messageId, content) {
+  console.log('called');
+  console.log(content);
+  database.ref('chats').child(userId).child(sessionId).child(messageId).content.push(content);
+}
+
+export function getLecture(userId, lectureId, callback) {
+  database.ref('transcripts').child(userId).on('value', (snapshort) => {
+    callback(snapshort.val());
   });
 }
 
 export function newTransctip(userId, Notes) {
   Transcipts.child(userId).push(Notes);
+}
+
+export function deleteLecture(id) {
+  Transcipts.child(id).remove();
 }
 
 export function newUser(id) {
