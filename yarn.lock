@@ -3605,10 +3605,13 @@ sparse-bitfield@^3.0.3:
   dependencies:
     memory-pager "^1.0.2"
 
-sse.js@^0.6.1:
+"sse.js@github:mpetazzoni/sse.js":
   version "0.6.1"
-  resolved "https://registry.npmjs.org/sse.js/-/sse.js-0.6.1.tgz"
-  integrity sha512-peXG6GnWqF5hnubhMw0WfB6rqQy7z7LaMBT067vqgQwC3gKz8JGFzexBSV80FqZ9JoUDwo3Xt5nxkrGrgbPrtA==
+  resolved "git+ssh://git@github.com/mpetazzoni/sse.js.git#cfe70a36d49009e403e1cd2419b097497ab693da"
+
+"sse@github:mpetazzoni/sse.js":
+  version "0.6.1"
+  resolved "git+ssh://git@github.com/mpetazzoni/sse.js.git#cfe70a36d49009e403e1cd2419b097497ab693da"
 
 stop-iteration-iterator@^1.0.0:
   version "1.0.0"
@@ -3950,6 +3953,11 @@ watchpack@^2.4.0:
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
+
+web-vitals@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.npmjs.org/web-vitals/-/web-vitals-2.1.4.tgz"
+  integrity sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

@@ -41,24 +41,13 @@
     "mongoose": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< Updated upstream
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
     "redux": "^4.2.1",
-    "sse.js": "^0.6.1",
-    "vite-plugin-eslint": "^1.8.1"
-=======
-    "react-scripts": "5.0.1",
+    "vite-plugin-eslint": "^1.8.1",
     "sse": "github:mpetazzoni/sse.js",
     "sse.js": "github:mpetazzoni/sse.js",
     "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "dev": "vite",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -77,9 +66,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.3.2"
->>>>>>> Stashed changes
   }
+
 }
