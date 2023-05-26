@@ -38,14 +38,8 @@ function ChatPage() {
     // ge the lecture
     useEffect(() => {
         Firebase.getLecture(user.uid, lectureId, (data) => {
-            Object.keys(data).map((key) => {
-                if (key === lectureId) {
-                    console.log('here');
-                    console.log(data[key]);
-                    setTranscriptName(data[key].Title);
-                    setTranscriptContent(data[key].Text);
-                }
-            });
+            setTranscriptName(data.file_name);
+            setTranscriptContent(data.transcript);
         });
     }, []);
 
