@@ -34,20 +34,18 @@ function Displaybox(props) {
 
   return (
     <div className="displaybox">
-      <div className="notcontentcards">
-        <span>
-          Lectures:
-        </span>
-        <label htmlFor="lecture-upload" className="button-group">
-          <button type="button" onClick={handleButtonClick}>
-            Upload lecture
-          </button>
-          <input type="file" id="lecture-upload" style={{ display: 'none' }} onChange={handleFileInputChange} ref={fileInputRef} />
-        </label>
-      </div>
-      <div className="lectures">
-        {lectures}
-      </div>
+        <div className="lecturescont">
+          <span>Recent Lectures</span>
+          <div className="lectures">{lectures}</div>
+        </div>
+        <div className="lectureupload">
+          <label htmlFor="lecture-upload" className="button-group">
+              <button type="button" onClick={handleButtonClick}>
+                Upload lecture
+              </button>
+              <input type="file" id="lecture-upload" style={{ display: 'none' }} onChange={handleFileInputChange} ref={fileInputRef} />
+          </label>
+        </div>
     </div>
   );
 }

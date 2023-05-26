@@ -1,3 +1,6 @@
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable indent */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable max-len */
 import './navbar.scss';
 
@@ -8,9 +11,13 @@ function Navbar() {
         <div className="navbar">
             <div className="leftside">
                 Notify
+                <img src="src/assets/grip-lines-vertical-solid.svg" alt="" />
             </div>
             <div className="rightside">
-                <i className="fa-sharp fa-light fa-house-chimney" />
+            <div className="search-bar">
+                <div className="search-icon"></div>
+                <input type="text" className="search-input" placeholder="Search..." />
+            </div>
 
                 <div className="profile">
                     <img

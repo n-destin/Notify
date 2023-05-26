@@ -13,7 +13,12 @@ import Login from '../pages/login/Login';
 // import Test from './Test';
 // eslint-disable-next-line import/extensions, import/no-unresolved
 import ChatPage from '../pages/chat_page/ChatPage';
+<<<<<<< HEAD
 import { auth } from '../services/dataStore';
+=======
+import { auth } from '../services/dataStore'
+import Landing from '../pages/landing/landing';
+>>>>>>> 26f0c0895a734f122f51a1332097a80942d4dfbc
 
 function Nav(props) {
     return (
