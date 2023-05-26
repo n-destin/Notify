@@ -1,17 +1,18 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable indent */
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCpgJEyYO2SDs3bbuiPloXr8lM2xdB-FI0",
-  authDomain: "notify-1f5d1.firebaseapp.com",
-  databaseURL: "https://notify-1f5d1-default-rtdb.firebaseio.com",
-  projectId: "notify-1f5d1",
-  storageBucket: "notify-1f5d1.appspot.com",
-  messagingSenderId: "722479830956",
-  appId: "1:722479830956:web:1dd94fa8ee817e6ccacc09",
-  measurementId: "G-W65VFDBW23"
+  apiKey: 'AIzaSyCpgJEyYO2SDs3bbuiPloXr8lM2xdB-FI0',
+  authDomain: 'notify-1f5d1.firebaseapp.com',
+  databaseURL: 'https://notify-1f5d1-default-rtdb.firebaseio.com',
+  projectId: 'notify-1f5d1',
+  storageBucket: 'notify-1f5d1.appspot.com',
+  messagingSenderId: '722479830956',
+  appId: '1:722479830956:web:1dd94fa8ee817e6ccacc09',
+  measurementId: 'G-W65VFDBW23',
 };
 
 function Message(senderName, messageContent) {
@@ -48,27 +49,27 @@ export function onSessionChange(userId, callback) {
   });
 }
 
-export function changeContent(userId, sessionId, messageId, content){
+export function changeContent(userId, sessionId, messageId, content) {
   console.log('called');
   console.log(content);
   database.ref('chats').child(userId).child(sessionId).child(messageId).content.push(content);
 }
 
-export function getLecture (userId, lectureId, callback) {
-  database.ref('transcripts').child(userId).on('value', (snapshort)=>{
+export function getLecture(userId, lectureId, callback) {
+  database.ref('transcripts').child(userId).on('value', (snapshort) => {
     callback(snapshort.val());
-  })
+  });
 }
 
 export function newTransctip(userId, Notes) {
   Transcipts.child(userId).push(Notes);
 }
 
-export function deleteLecture(id){
-  Transcipts.child(id).remove()
+export function deleteLecture(id) {
+  Transcipts.child(id).remove();
 }
 
-export function newUser(id){
+export function newUser(id) {
   try {
     Transcipts.child(id).push('');
     console.log('creating a new user');

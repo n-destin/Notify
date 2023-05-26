@@ -1,3 +1,5 @@
+/* eslint-disable no-dupe-else-if */
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-unused-vars */
 /* eslint-disable indent */
 /* eslint-disable react/jsx-props-no-multi-spaces */
@@ -17,7 +19,7 @@ function Home() {
     const [transcriptionError, setTranscriptionError] = useState(false);
     const user = auth.currentUser;
 
-    // console.log(user.uid);
+    console.log(`User: ${user.uid}`);
     // const userID = user.uid;
 
     useEffect(() => {

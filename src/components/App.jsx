@@ -1,3 +1,7 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-indent-props */
 import React, { useState, useEffect } from 'react';
 
 import {
@@ -9,14 +13,13 @@ import Login from '../pages/login/Login';
 // import Test from './Test';
 // eslint-disable-next-line import/extensions, import/no-unresolved
 import ChatPage from '../pages/chat_page/ChatPage';
-import { auth } from '../services/dataStore'
-import Landing from '../pages/landing/landing';
+import { auth } from '../services/dataStore';
 
 function Nav(props) {
     return (
         <nav>
             <ul className="NavBar">
-                <NavLink to="/"></NavLink>
+                <NavLink to="/" />
             </ul>
         </nav>
     );
@@ -28,7 +31,7 @@ function FallBack(props) {
 
 function App(props) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
 
     // const Navigate = useNavigate();
     useEffect(() => {
@@ -43,18 +46,17 @@ function App(props) {
     if (loading) {
         return <div>Loading...</div>;
     }
-
     return (
         <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route
-                        path="/home"
-                        element={ < Home />}
-                    />
-                    <Route path="*" element={<FallBack />} />
-                    <Route path = '/chat/:id' element = {<ChatPage />}/>
-                </Routes>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route
+                    path="/home"
+                    element={<Home />}
+                />
+                <Route path="*" element={<FallBack />} />
+                <Route path="/chat/:id" element={<ChatPage />} />
+            </Routes>
         </BrowserRouter>
     );
 }
