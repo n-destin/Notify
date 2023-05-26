@@ -56,7 +56,7 @@ export function changeContent(userId, sessionId, messageId, content) {
 }
 
 export function getLecture(userId, lectureId, callback) {
-  database.ref('transcripts').child(userId).on('value', (snapshort) => {
+  database.ref('transcripts').child(userId).child(lectureId).on('value', (snapshort) => {
     callback(snapshort.val());
   });
 }
