@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
@@ -26,8 +27,9 @@ function Displaybox(props) {
 
 
   const lectures = Object.keys(props.lectures).map((lecture)=>{
+    console.log('getting the lectures');
     console.log(lecture);
-    return <Contentcard count = {lecture.id}/>
+    return <Contentcard lecture = {lecture}/>
   })
 
   return (
@@ -39,7 +41,6 @@ function Displaybox(props) {
         <label htmlFor="lecture-upload" className="button-group">
           <button type="button" onClick={handleButtonClick}>
             Upload lecture
-
           </button>
           <input type="file" id="lecture-upload" style={{ display: 'none' }} onChange={handleFileInputChange} ref={fileInputRef} />
         </label>

@@ -15,7 +15,7 @@ function Contentcard(props) {
       </div>
       <div className="caption">
         <span>
-          Lecture {props.count};
+          {props.lecture.Title};
         </span>
       </div>
     </div>
