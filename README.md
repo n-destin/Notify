@@ -1,24 +1,30 @@
 # Project Notify Web App
 
 ![Team Photo](Insert a Team Photo URL here)
-[*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
 
-TODO: short project description, some sample screenshots or mockups
+Notify is a web application that improves the learning process when watching lectures. Users can upload lecture videos, which are then transcribed using Whisper AI. Then, the transcript and summary are uploaded to Firebase, which the user can access through the web app. There, users can interact with ChatGPT using the transcript and summary as the knowledge base. The web app interacts with our API. The chrome extension provides a streamlined way to upload lectures.
 
 ## Architecture
 
-TODO:  descriptions of code organization and tools and libraries used
+- Frontend: JavaScript, React, and Tailwind CSS
+- Backend: Firebase and AWS
+- API: https://github.com/dartmouth-cs52-23s/project-api-notify
+- Chrome Extension: https://github.com/dartmouth-cs52-23s/project-other-notify
 
 ## Setup
 
-TODO: how to get the project dev environment up and running, npm install etc
+`npm install && npx tailwindcss -i ./src/index.css -o ./dist/output.css && npm run dev`
 
 ## Deployment
 
-TODO: how to deploy the project
+Deployed URL: 
 
 ## Authors
 
-TODO: list of authors
+Team Notify
 
 ## Acknowledgments
+
+CS52 Staff
+
+ChatGPT for regular guidance 
