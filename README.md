@@ -1,7 +1,5 @@
 # Project Notify Web App
 
-![Team Photo](Insert a Team Photo URL here)
-
 Notify is a web application that improves the learning process when watching lectures. Users can upload lecture videos, which are then transcribed using Whisper AI. Then, the transcript and summary are uploaded to Firebase, which the user can access through the web app. There, users can interact with ChatGPT using the transcript and summary as the knowledge base. The web app interacts with our API. The chrome extension provides a streamlined way to upload lectures.
 
 ## Architecture
@@ -17,7 +15,7 @@ Notify is a web application that improves the learning process when watching lec
 
 ## Deployment
 
-Deployed URL: 
+Deployed URL: [notify.study](https://notify.study)
 
 ## Authors
 
