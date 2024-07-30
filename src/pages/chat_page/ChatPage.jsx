@@ -169,7 +169,7 @@ function ServerChatMessage({
     }
 
     async function streamContent(serverChatId) {
-        const API_KEY = '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'; // need to make ENV var
+        const API_KEY = ''; // need to make ENV var
         const url = 'https://api.openai.com/v1/chat/completions';
 
         const data = {
