@@ -57,8 +57,8 @@ function Home() {
 
         // Initialize AWS S3 bucket for storing transcript
         AWS.config.update({
-            accessKeyId: '', // need to make ENV
-            secretAccessKey: '', // need to make ENV
+            accessKeyId: process.env.accessKey, // need to make ENV
+            secretAccessKey: process.env.secretAccessKey, // need to make ENV
             region: 'us-east-1', // need to make ENV
         });
         const s3 = new AWS.S3();
