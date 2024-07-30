@@ -5,14 +5,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCpgJEyYO2SDs3bbuiPloXr8lM2xdB-FI0',
-  authDomain: 'notify-1f5d1.firebaseapp.com',
-  databaseURL: 'https://notify-1f5d1-default-rtdb.firebaseio.com',
-  projectId: 'notify-1f5d1',
-  storageBucket: 'notify-1f5d1.appspot.com',
-  messagingSenderId: '722479830956',
-  appId: '1:722479830956:web:1dd94fa8ee817e6ccacc09',
-  measurementId: 'G-W65VFDBW23',
+  // configure firebase
 };
 
 function Message(senderName, messageContent) {
